@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>غرفة الشرقية - البوابة الداخلية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.rtl.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-blue: #1a6fa8;
+      --light-bg: #f4f6f9;
+      --card-border: #e5e7eb;
+      --text-dark: #1f2937;
+      --text-muted: #6b7280;
+      --navbar-bg: #1e3a5f;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      padding-bottom: 60px;
+    }
+
+    /* ===== NAVBAR ===== */
+    .top-navbar {
+      background-color: var(--navbar-bg);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .top-navbar .nav-link {
+      color: #cbd5e1 !important;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      transition: background 0.2s;
+    }
+
+    .top-navbar .nav-link:hover,
+    .top-navbar .nav-link.active {
+      background-color: rgba(255,255,255,0.1);
+      color: #fff !important;
+    }
+
+    .top-navbar .nav-link.active {
+      background-color: #2563eb;
+      color: #fff !important;
+    }
+
+    .navbar-search input {
+      border-radius: 20px;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      font-size: 0.85rem;
+      padding: 5px 14px;
+      width: 160px;
+    }
+
+    .navbar-search input::placeholder { color: rgba(255,255,255,0.6); }
+    .navbar-search input:focus {
+      outline: none;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .navbar-search .search-icon {
+      color: rgba(255,255,255,0.7);
+      margin-left: 6px;
+      font-size: 0.85rem;
+    }
+
+    .user-badge {
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .user-badge .avatar {
+      width: 28px;
+      height: 28px;
+      background: #3b82f6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #fff;
+    }
+
+    .lang-badge {
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      padding: 8px 12px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .home-icon-btn {
+      background: transparent;
+      border: none;
+      color: #cbd5e1;
+      padding: 8px 14px;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .home-icon-btn:hover { color: #fff; }
+
+    /* ===== SECTION HEADINGS ===== */
+    .section-heading {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
+      text-align: right;
+    }
+
+    /* ===== CARDS ===== */
+    .portal-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+      height: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .portal-card:hover {
+      box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+      color: inherit;
+    }
+
+    .card-icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.2rem;
+    }
+
+    .card-body-text h6 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card-body-text p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* Icon background colors */
+    .bg-green-soft  { background-color: #d1fae5; color: #059669; }
+    .bg-blue-soft   { background-color: #dbeafe; color: #2563eb; }
+    .bg-indigo-soft { background-color: #e0e7ff; color: #4f46e5; }
+    .bg-orange-soft { background-color: #ffedd5; color: #ea580c; }
+    .bg-teal-soft   { background-color: #ccfbf1; color: #0d9488; }
+    .bg-sky-soft    { background-color: #e0f2fe; color: #0284c7; }
+    .bg-pink-soft   { background-color: #fce7f3; color: #db2777; }
+    .bg-purple-soft { background-color: #f3e8ff; color: #9333ea; }
+    .bg-rose-soft   { background-color: #ffe4e6; color: #e11d48; }
+    .bg-amber-soft  { background-color: #fef3c7; color: #d97706; }
+    .bg-cyan-soft   { background-color: #cffafe; color: #0891b2; }
+    .bg-lime-soft   { background-color: #ecfccb; color: #65a30d; }
+
+    /* ===== MAIN CONTENT ===== */
+    .main-content {
+      padding: 28px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ===== VISION/MISSION/GOALS SECTION ===== */
+    .vmg-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 22px 20px;
+      height: 100%;
+      text-align: right;
+    }
+
+    .vmg-icon {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .vmg-card h6 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .vmg-card p, .vmg-card ul {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .vmg-card ul {
+      padding-right: 16px;
+      padding-left: 0;
+    }
+
+    /* ===== QR SECTION ===== */
+    .qr-section {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .qr-section h6 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1a6fa8;
+    }
+
+    .qr-placeholder {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      background: #f9fafb;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #374151;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background-color: #1e3a5f;
+      color: #cbd5e1;
+      padding: 40px 60px 20px;
+      margin-top: 50px;
+    }
+
+    footer h6 {
+      color: #f1f5f9;
+      font-weight: 700;
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      line-height: 1.8;
+      color: #94a3b8;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .social-icons a {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-left: 12px;
+      transition: color 0.2s;
+    }
+    .social-icons a:hover { color: #fff; }
+
+    .footer-divider {
+      border-color: rgba(255,255,255,0.1);
+      margin: 24px 0 14px;
+    }
+
+    .footer-bottom {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .main-content { padding: 18px 16px; }
+      footer { padding: 30px 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav class="top-navbar">
+  <div class="d-flex align-items-center justify-content-between px-3">
+
+    <!-- Home button (right side in RTL) -->
+    <button class="home-icon-btn">
+      <i class="fa fa-home"></i>
+    </button>
+
+    <!-- Nav links -->
+    <div class="d-flex align-items-center overflow-auto">
+      <a href="#" class="nav-link active">الصفحة الرئيسية</a>
+      <a href="#" class="nav-link">الهيكل التنظيمي</a>
+      <a href="#" class="nav-link">دليل الموظفين</a>
+      <a href="#" class="nav-link">اللجان الدائمة</a>
+      <a href="#" class="nav-link">المناسبات</a>
+      <a href="#" class="nav-link">خدمات</a>
+    </div>
+
+    <!-- Search + User + Language -->
+    <div class="d-flex align-items-center">
+      <div class="navbar-search d-flex align-items-center ms-3">
+        <i class="fa fa-search search-icon"></i>
+        <input type="text" placeholder="بحث..." />
+      </div>
+      <div class="lang-badge ms-2">العربية</div>
+      <div class="user-badge ms-2">
+        <div class="avatar">ح</div>
+        <span>حمد إبراهيم عبد العزيز</span>
+        <i class="fa fa-chevron-down" style="font-size:0.7rem"></i>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ==================== MAIN CONTENT ==================== -->
+<div class="main-content">
+
+  <!-- ===== SECTION 1: Systems & Platforms ===== -->
+  <div class="section-heading">الانظمة و المنصات</div>
+  <div class="row g-3 mb-4">
+
+    <!-- منصة إيجار -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-green-soft">
+          <i class="fa fa-clipboard-list"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>منصة إيجار</h6>
+          <p>أحد البرامج المتخصصة لإدارة الخطط و المشروعات ويتم من خلال النظام إعداد وإدارة ومتابعة تنفيذ الخطط السنوية وتقييم الأداء.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- مدراء الادارات و المكاتب -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-indigo-soft">
+          <i class="fa fa-sitemap"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>مدراء الادارات و المكاتب</h6>
+          <p>من خلال هذا القسم يمكنك معرفة أسماء المدراء وإداراتهم ومن هو المكلف حالياً على مستوى المنظمة الإدارية.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- ERP سيل -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-blue-soft">
+          <i class="fa fa-th-large"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>ERP سيل</h6>
+          <p>هي منصة تضم مجموعة تطبيقات لإدارة الأعمال مثل المحاسبة، المبيعات، المخزون، الموارد البشرية و التسويق في منصة واحدة قابلة للتخصيص و التطوير.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- منصة اختصار الروابط و تكوين QR -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-orange-soft">
+          <i class="fa fa-qrcode"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>منصة اختصار الروابط و تكوين QR</h6>
+          <p>هو نظام يعبر عن اختصار الروابط الطويلة لروابط الويب مع تكوين رمز QR بسهولة عملية الوصول إلى الصفحة عن طريق مسح رمز QR من خلال الجوال.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- منصة ادارة المساهمات -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-teal-soft">
+          <i class="fa fa-handshake"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>منصة ادارة المساهمات</h6>
+          <p>منصة إدارة مساهمات لرجال الأعمال والشركات.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- نظام الوارد و الصادر (مسار) -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-sky-soft">
+          <i class="fa fa-envelope"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>نظام الوارد و الصادر (مسار)</h6>
+          <p>نظام مسار من أكثر الحلول التقنية في مجال إدارة الاتصالات الإدارية ويساعد على إتمام أعمال الكثير في أقل وقت و جهد قبل وأثناء و استمرار التحرير.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- الدعم الفني - ادارة التحول الرقمي -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-blue-soft">
+          <i class="fa fa-headset"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>الدعم الفني - ادارة التحول الرقمي</h6>
+          <p>هو نظام يتيح لك على خلاله طلب خدمات الدعم الفني الخاصة بأجهزة الحاسوب والشبكات والإيميلات وكل ما يخص عملية الدعم الفني وذلك بشكل الكتروني.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- منصة دليل المستشفيات -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-pink-soft">
+          <i class="fa fa-hospital"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>منصة دليل المستشفيات</h6>
+          <p>قاعدة بيانات تمكّن المستخدمين من البحث عن المكانة المعتمدة في تأمين انضمام موظفيها الجديدة في القطاع الصحي للشرقية.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Asharqia Gpt منصة -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-purple-soft">
+          <i class="fa fa-robot"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>Asharqia Gpt منصة</h6>
+          <p>تطبيق ذكاء اصطناعي متخصص في المساعدة والإجابة على الأسئلة المتعلقة بالمنظمة والمساعدة في تسيير إدارة الأعمال.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+  <!-- end systems section -->
+
+  <!-- ===== SECTION 2: Documents ===== -->
+  <div class="section-heading">المستندات</div>
+  <div class="row g-3 mb-5">
+
+    <!-- دليل الموظف -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-blue-soft">
+          <i class="fa fa-id-card"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>دليل الموظف</h6>
+          <p>دليل يوضح كل ما يحتاجه الموظف كمعلومة.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- نظام مسار - دليل المستخدم -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-teal-soft">
+          <i class="fa fa-book-open"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>نظام مسار - دليل المستخدم</h6>
+          <p>دليل المستخدم لنظام مسار الصادر والوارد.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- سياسة نظم الادارة المتكاملة -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-green-soft">
+          <i class="fa fa-shield-alt"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>سياسة نظم الادارة المتكاملة</h6>
+          <p>معايير التزام نظم الإدارة بكافة متطلبات التشغيل والإدارية.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- دليل السياسات المالية -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-amber-soft">
+          <i class="fa fa-file-invoice-dollar"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>دليل السياسات المالية</h6>
+          <p>دليل مختص بالسياسات المالية بغرفة الشرقية.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- معلومات الاتصال (الكوارث/الطوارئ) -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-rose-soft">
+          <i class="fa fa-phone-alt"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>معلومات الاتصال (الكوارث/ الطوارئ)</h6>
+          <p>معلومات الاتصال في حالة الكوارث أو الطوارئ الله لا سمح الله.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- خدمة تقدر -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-lime-soft">
+          <i class="fa fa-tag"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>خدمة تقدر</h6>
+          <p>قائمة الخيرات التي تقدم خصومات لموظفي غرفة الشرقية وعائلاتهم.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- السياسات الامنة لاستخدام موظفي غرفة الشرقية للذكاء الاصطناعي -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-indigo-soft">
+          <i class="fa fa-user-shield"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>السياسات الامنة لاستخدام موظفي غرفة الشرقية للذكاء الاصطناعي</h6>
+          <p>للاطلاع على السياسات الامنة لاستخدام الذكاء الاصطناعي بأمان.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- آلية إنشاء مواقع الكترونية -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-cyan-soft">
+          <i class="fa fa-globe"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>آلية إنشاء مواقع الكترونية</h6>
+          <p>للاطلاع على آلية إنشاء المواقع الإلكترونية ضمن منظومة الغرفة.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- محاضر إجتماعات الإئتمن لقطاع الأمانة العامة -->
+    <div class="col-md-4">
+      <a href="#" class="portal-card">
+        <div class="card-icon-wrap bg-orange-soft">
+          <i class="fa fa-file-alt"></i>
+        </div>
+        <div class="card-body-text">
+          <h6>محاضر إجتماعات الإئتمن لقطاع الأمانة العامة</h6>
+          <p>للاطلاع على محاضر إجتماعات الإئتمن لقطاع الأمانة العامة.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+  <!-- end documents section -->
+
+  <!-- ===== SECTION 3: Vision / Mission / Goals ===== -->
+  <div class="row g-3 mb-4">
+
+    <!-- الرؤية -->
+    <div class="col-md-4">
+      <div class="vmg-card">
+        <div class="vmg-icon" style="color:#f59e0b;">
+          <i class="fa fa-eye"></i>
+        </div>
+        <h6>الرؤية</h6>
+        <p>رائدة... لتقطة الأعمال.<br/>رائدة... مستدامة.<br/>متميزة... وخدماتها.</p>
+      </div>
+    </div>
+
+    <!-- الرسالة -->
+    <div class="col-md-4">
+      <div class="vmg-card">
+        <div class="vmg-icon" style="color:#3b82f6;">
+          <i class="fa fa-paper-plane"></i>
+        </div>
+        <h6>الرسالة</h6>
+        <p>دعم وتطوير العمل الاقتصادي والنمو للقطاع الأعمال، والعمل كمنصة لتعزيز فرص التواصل.</p>
+      </div>
+    </div>
+
+    <!-- الأهداف -->
+    <div class="col-md-4">
+      <div class="vmg-card">
+        <div class="vmg-icon" style="color:#ef4444;">
+          <i class="fa fa-bullseye"></i>
+        </div>
+        <h6>الأهداف</h6>
+        <ul>
+          <li>تمكين الشراكة للتأثير الاستراتيجي في القرار الاقتصادي</li>
+          <li>تعزيز التنافسية في بيئة الأعمال</li>
+          <li>تعظيم المكانة الاقتصادية والمجتمعية للمنطقة</li>
+          <li>تطوير التميز المؤسسي</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== QR SECTION ===== -->
+  <div class="row justify-content-center mb-4">
+    <div class="col-md-4">
+      <div class="qr-section">
+        <h6>موقع غرفة الشرقية</h6>
+        <div class="qr-placeholder">
+          <i class="fa fa-qrcode"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- end main content -->
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="row">
+
+    <!-- من نحن -->
+    <div class="col-md-6 mb-4">
+      <h6>من نحن</h6>
+      <p>
+        أنشئت غرفة الشرقية في عام (1952م)، وقد حضت منذ تأسيسها على قاعدة واسعة على مختلف الأصعدة. إيماناً من رؤيتنا
+        إصلاح اقتصادياً واهتمامنا المستمر تطوير خدماتنا من رجال الأعمال إلى إرساء قيم التميز في تطوير الاقتصاد والانضمام والقضايا
+        وإدراكنا للدور المنوط في خدمة الاقتصاد والمجتمع. في ذلك إيماناً وتحقيقاً للأهداف التي تتبناها لأحداث التطور والتقدم والمستقبل الآفاق والرأي.
+        في مجالات خدمة قطاع الأعمال حيث تبنت الغرفة العديد من التوجهات على المستويين الأفقي والرأسي.
+      </p>
+    </div>
+
+    <!-- تواصل معنا -->
+    <div class="col-md-6 mb-4 text-end">
+      <h6 class="text-end">تواصل معنا</h6>
+
+      <div class="footer-contact-item justify-content-end">
+        <span style="color:#3b82f6; font-size:0.85rem;">920024555</span>
+        <i class="fa fa-phone-alt" style="color:#3b82f6;"></i>
+      </div>
+
+      <div class="social-icons mt-3 text-end">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="footer-divider" />
+  <div class="footer-bottom">
+    <span>جميع الحقوق محفوظة لغرفة الشرقية &copy; 2024</span>
+    <span class="ms-4">English (USD)</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

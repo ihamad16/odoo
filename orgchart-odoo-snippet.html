@@ -59,20 +59,18 @@
     text-align: center; color: var(--text);
     box-shadow: 0 1px 0 rgba(14,26,45,0.02), 0 4px 10px -8px rgba(14,26,45,0.10);
     z-index: 3; line-height: 1.25;
-    font-size: 15.5px; font-weight: 500; overflow: hidden;
+    font-size: 16px; font-weight: 500; overflow: hidden;
     transition: transform .25s ease, box-shadow .25s ease;
   }
   .org-chart-root .oc-node:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(14,26,45,0.02), 0 10px 20px -12px rgba(14,26,45,0.16); z-index: 4; }
   .org-chart-root .t-board, .org-chart-root .t-exec { background: var(--primary-bg); color: var(--primary-fg); border-color: transparent; }
-  .org-chart-root .t-board { font-weight: 600; font-size: 18px; }
-  .org-chart-root .t-exec  { font-size: 17px; }
   .org-chart-root .t-committee { background: transparent; border-color: var(--text); }
   .org-chart-root .t-chair { background: var(--leader-bg); color: var(--leader-fg); border-color: transparent; font-weight: 600; font-size: 17px; }
   .org-chart-root .t-sg    { background: var(--leader-bg); color: var(--leader-fg); border-color: transparent; font-weight: 700; font-size: 18px; }
-  .org-chart-root .t-audit { background: var(--audit-bg); color: var(--audit-fg); border-color: transparent; font-size: 15.5px; }
-  .org-chart-root .t-admin { background: var(--admin-bg); color: var(--admin-fg); border-color: transparent; font-size: 15.5px; }
-  .org-chart-root .t-sector{ background: var(--sector-bg); color: var(--sector-fg); border-color: transparent; font-weight: 600; font-size: 16.5px; }
-  .org-chart-root .t-unit  { background: var(--unit-bg); color: var(--unit-fg); border-color: var(--line-soft); border-right: 3px solid var(--unit-accent); font-weight: 400; font-size: 15px; }
+  .org-chart-root .t-audit { background: var(--audit-bg); color: var(--audit-fg); border-color: transparent; }
+  .org-chart-root .t-admin { background: var(--admin-bg); color: var(--admin-fg); border-color: transparent; }
+  .org-chart-root .t-sector{ background: var(--sector-bg); color: var(--sector-fg); border-color: transparent; }
+  .org-chart-root .t-unit  { background: var(--unit-bg); color: var(--unit-fg); border-color: var(--line-soft); border-right: 3px solid var(--unit-accent); }
 
   @media print {
     .org-chart-root .oc-canvas { transform: none !important; }
@@ -93,8 +91,8 @@
     <path class="solid" d="M 740 346 V 400"/>
     <path class="solid" d="M 740 456 V 590"/>
     <!-- top branches with rounded corners (committees at top:140) -->
-    <path class="dotted" d="M 600 68 L 244 68 Q 230 68 230 82 L 230 140"/>
-    <path class="dotted" d="M 880 68 L 1236 68 Q 1250 68 1250 82 L 1250 140"/>
+    <path class="solid" d="M 600 68 L 244 68 Q 230 68 230 82 L 230 140"/>
+    <path class="solid" d="M 880 68 L 1236 68 Q 1250 68 1250 82 L 1250 140"/>
     <!-- internal audit branches off the spine between exec committee and chairman -->
     <path class="solid" d="M 740 263 H 1236 Q 1250 263 1250 277 V 290"/>
     <circle class="junction" cx="740" cy="263" r="2.5"/>

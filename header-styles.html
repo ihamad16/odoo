@@ -1,0 +1,64 @@
+<!--
+  ════════════════════════════════════════════════════════════
+  تنسيق الترويسة (Header) — كود معزول جاهز للّصق
+  ════════════════════════════════════════════════════════════
+  • الصقه في: Website → Customize → Header → Custom Code
+    أو في حقل HTML داخل قالب الترويسة
+  • يحتوي تأثير الخط السفلي المُتحرّك من المركز
+  • تم إصلاح مشكلة caret المنسدل من Bootstrap
+  ════════════════════════════════════════════════════════════
+-->
+
+<style>
+  /* ============================================================
+     روابط القائمة الرئيسية في الترويسة
+     ============================================================ */
+  header .top_menu > li > a,
+  header .navbar-nav > .nav-item > .nav-link,
+  .o_header_standard .top_menu > li > a {
+    position: relative;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+  }
+
+  /* ============================================================
+     الخط السفلي المتحرّك من المركز
+     ============================================================
+     الخصائص border / margin / vertical-align ضرورية لإلغاء
+     السهم الصغير (caret) الذي يضيفه Bootstrap على
+     .dropdown-toggle::after في القوائم المنسدلة.
+  */
+  header .top_menu > li > a::after,
+  header .navbar-nav > .nav-item > .nav-link::after,
+  .o_header_standard .top_menu > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    border: 0;
+    margin: 0;
+    vertical-align: baseline;
+    transition: right 0.3s ease, width 0.3s ease;
+  }
+
+  header .top_menu > li > a:hover::after,
+  header .navbar-nav > .nav-item > .nav-link:hover::after,
+  .o_header_standard .top_menu > li > a:hover::after {
+    right: 16px;
+    width: calc(100% - 32px);
+  }
+
+  /* ============================================================
+     توكيد إخفاء caret على عناصر القوائم المنسدلة
+     (احتياط في حال وُجدت قواعد ذات أولوية أعلى)
+     ============================================================ */
+  header .navbar-nav .dropdown-toggle::after,
+  header .top_menu .dropdown-toggle::after {
+    border: 0 !important;
+  }
+</style>

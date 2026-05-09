@@ -65,12 +65,12 @@
   .org-chart-root .oc-node:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(14,26,45,0.02), 0 10px 20px -12px rgba(14,26,45,0.16); z-index: 4; }
   .org-chart-root .t-board, .org-chart-root .t-exec { background: var(--primary-bg); color: var(--primary-fg); border-color: transparent; }
   .org-chart-root .t-committee { background: transparent; border-color: var(--text); }
-  .org-chart-root .t-chair { background: var(--leader-bg); color: var(--leader-fg); border-color: transparent; font-weight: 600; font-size: 17px; }
-  .org-chart-root .t-sg    { background: var(--leader-bg); color: var(--leader-fg); border-color: transparent; font-weight: 700; font-size: 18px; }
+  .org-chart-root .t-chair { background: var(--leader-bg); color: var(--leader-fg); border-color: transparent; }
+  .org-chart-root .t-sg    { background: var(--leader-bg); color: var(--leader-fg); border-color: transparent; }
   .org-chart-root .t-audit { background: var(--audit-bg); color: var(--audit-fg); border-color: transparent; }
   .org-chart-root .t-admin { background: var(--admin-bg); color: var(--admin-fg); border-color: transparent; }
   .org-chart-root .t-sector{ background: var(--sector-bg); color: var(--sector-fg); border-color: transparent; }
-  .org-chart-root .t-unit  { background: var(--unit-bg); color: var(--unit-fg); border-color: var(--line-soft); border-right: 3px solid var(--unit-accent); }
+  .org-chart-root .t-unit  { background: var(--unit-bg); color: var(--unit-fg); border-color: var(--line-soft); border-right: 3px solid var(--unit-accent); font-weight: 400; font-size: 15px; }
 
   @media print {
     .org-chart-root .oc-canvas { transform: none !important; }

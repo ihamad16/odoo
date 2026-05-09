@@ -1,0 +1,283 @@
+<style>#wrapwrap {background-image: unset!important;}</style>
+
+
+<style>
+*:not(.fa):not(.oi){
+font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+.page, .header, .footer{
+font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}</style>
+ <style>
+    /* ============================================
+       إخفاء النص الأصلي قبل قيمة العملة
+       (رموز مثل $، ر.س، &nbsp;، إلخ)
+       ============================================ */
+    [data-oe-type="monetary"] {
+        font-size: 0 !important;       /* يُخفي أي نص في العنصر الأب */
+    }
+
+    /* استعادة حجم الخط للعناصر الأبناء */
+    [data-oe-type="monetary"] > * {
+        font-size: 1rem !important;     /* أو الحجم المناسب */
+    }
+
+    /* ============================================
+       إظهار رمز الريال ﷼ قبل قيمة العملة
+       ============================================ */
+    .oe_currency_value::before {
+        content: "\e900" !important;
+        font-family: "sar-symbol" !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        width: auto !important;
+        margin-inline-end: 4px !important;
+        font-size: 0.95em !important;
+    }
+.s_card, .card {
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* الإطار الأيمن - لا يأخذ مساحة من البطاقة */
+.s_card::before, .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #2c3e6b;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+
+.s_card:hover::before, .card:hover::before {
+    transform: scaleY(1);
+}
+
+.s_card:hover, .card:hover {
+    transform: translateY(-5px);
+}
+
+/* تكبير الأيقونة عند المرور بالماوس */
+.s_card img, .s_card i, .s_card svg,
+.card img, .card i, .card svg {
+    transition: transform 0.35s ease;
+}
+
+.s_card:hover img, .s_card:hover i, .s_card:hover svg,
+.card:hover img, .card:hover i, .card:hover svg {
+    transform: scale(1.12);
+}
+
+/* إزالة جميع تأثيرات الروابط داخل البطاقات */
+.s_card a, .card a,
+.s_card a:hover, .card a:hover,
+.s_card a:visited, .card a:visited,
+.s_card a:active, .card a:active,
+.s_card a:focus, .card a:focus {
+    color: inherit !important;
+    text-decoration: none !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+}
+/* ============================================
+   النمط ١ - خط سفلي ينزلق من المركز
+   ============================================ */
+header .top_menu > li > a,
+header .navbar-nav > .nav-item > .nav-link,
+.o_header_standard .top_menu > li > a {
+    position: relative;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+header .top_menu > li > a::after,
+header .navbar-nav > .nav-item > .nav-link::after,
+.o_header_standard .top_menu > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    border: 0;                  /* إصلاح: يُلغي السهم الصغير من Bootstrap */
+    margin: 0;
+    vertical-align: baseline;
+    transition: all 0.3s ease;
+}
+
+header .top_menu > li > a:hover::after,
+header .navbar-nav > .nav-item > .nav-link:hover::after,
+.o_header_standard .top_menu > li > a:hover::after {
+    right: 16px;
+    width: calc(100% - 32px);
+}
+
+/* ============================================
+   النمط ٢ - القائمة المنسدلة الأنيقة
+   ============================================ */
+header .navbar-nav .dropdown-menu,
+header .top_menu .dropdown-menu,
+.o_header_standard .dropdown-menu {
+    background-color: #ffffff;
+    border: 1px solid rgba(14, 26, 45, 0.08);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px -8px rgba(14, 26, 45, 0.18),
+                0 4px 12px -4px rgba(14, 26, 45, 0.08);
+    padding: 8px 0 !important;
+    margin-top: 12px !important;
+    min-width: 220px;
+    overflow: visible;
+
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0s linear 0.25s;
+    pointer-events: none;
+}
+
+header .navbar-nav .dropdown:hover > .dropdown-menu,
+header .navbar-nav .dropdown-menu.show,
+header .top_menu .dropdown:hover > .dropdown-menu,
+header .top_menu .dropdown-menu.show,
+.o_header_standard .dropdown:hover > .dropdown-menu,
+.o_header_standard .dropdown-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0s linear 0s;
+}
+
+/* مؤشّر مثلّث صغير أعلى القائمة */
+header .navbar-nav .dropdown-menu::before,
+header .top_menu .dropdown-menu::before,
+.o_header_standard .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-top: 1px solid rgba(14, 26, 45, 0.08);
+    border-right: 1px solid rgba(14, 26, 45, 0.08);
+    transform: rotate(-45deg);
+}
+
+/* عناصر القائمة */
+header .navbar-nav .dropdown-menu .dropdown-item,
+header .top_menu .dropdown-menu .dropdown-item,
+header .navbar-nav .dropdown-menu > li > a,
+header .top_menu .dropdown-menu > li > a,
+.o_header_standard .dropdown-menu .dropdown-item,
+.o_header_standard .dropdown-menu > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 22px 10px 18px !important;
+    color: #1c2841 !important;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none !important;
+    background: transparent !important;
+    transition: background-color 0.2s ease, color 0.2s ease, padding 0.25s ease;
+}
+
+/* الشريط الأزرق يميناً (يطابق بطاقاتك) */
+header .navbar-nav .dropdown-menu .dropdown-item::before,
+header .top_menu .dropdown-menu .dropdown-item::before,
+header .navbar-nav .dropdown-menu > li > a::before,
+header .top_menu .dropdown-menu > li > a::before,
+.o_header_standard .dropdown-menu .dropdown-item::before,
+.o_header_standard .dropdown-menu > li > a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #2c3e6b;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s ease;
+}
+
+/* تأثير المرور */
+header .navbar-nav .dropdown-menu .dropdown-item:hover,
+header .navbar-nav .dropdown-menu .dropdown-item:focus,
+header .top_menu .dropdown-menu .dropdown-item:hover,
+header .top_menu .dropdown-menu .dropdown-item:focus,
+header .navbar-nav .dropdown-menu > li > a:hover,
+header .top_menu .dropdown-menu > li > a:hover,
+.o_header_standard .dropdown-menu .dropdown-item:hover,
+.o_header_standard .dropdown-menu .dropdown-item:focus {
+    background-color: rgba(44, 62, 107, 0.08) !important;
+    color: #0E1A2D !important;
+    padding-right: 26px !important;
+}
+
+header .navbar-nav .dropdown-menu .dropdown-item:hover::before,
+header .navbar-nav .dropdown-menu .dropdown-item:focus::before,
+header .top_menu .dropdown-menu .dropdown-item:hover::before,
+header .top_menu .dropdown-menu .dropdown-item:focus::before,
+header .navbar-nav .dropdown-menu > li > a:hover::before,
+header .top_menu .dropdown-menu > li > a:hover::before,
+.o_header_standard .dropdown-menu .dropdown-item:hover::before,
+.o_header_standard .dropdown-menu .dropdown-item:focus::before {
+    transform: scaleY(1);
+}
+
+/* العنصر النشط */
+header .navbar-nav .dropdown-menu .dropdown-item.active,
+header .top_menu .dropdown-menu .dropdown-item.active,
+.o_header_standard .dropdown-menu .dropdown-item.active {
+    background-color: rgba(44, 62, 107, 0.12) !important;
+    color: #2c3e6b !important;
+    font-weight: 600 !important;
+}
+header .navbar-nav .dropdown-menu .dropdown-item.active::before,
+header .top_menu .dropdown-menu .dropdown-item.active::before,
+.o_header_standard .dropdown-menu .dropdown-item.active::before {
+    transform: scaleY(1);
+}
+
+/* الفاصل */
+header .navbar-nav .dropdown-menu .dropdown-divider,
+header .top_menu .dropdown-menu .dropdown-divider,
+.o_header_standard .dropdown-menu .dropdown-divider {
+    margin: 6px 14px;
+    border-top: 1px solid rgba(14, 26, 45, 0.08);
+}
+
+/* استجابة للجوال */
+@media (max-width: 991.98px) {
+    header .navbar-nav .dropdown-menu,
+    header .top_menu .dropdown-menu,
+    .o_header_standard .dropdown-menu {
+        box-shadow: none;
+        border: none;
+        margin-top: 0 !important;
+        padding: 0 !important;
+    }
+    header .navbar-nav .dropdown-menu::before,
+    header .top_menu .dropdown-menu::before,
+    .o_header_standard .dropdown-menu::before {
+        display: none;
+    }
+}
+
+</style>

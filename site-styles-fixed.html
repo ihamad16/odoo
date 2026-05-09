@@ -1,0 +1,200 @@
+<!--
+  ════════════════════════════════════════════════════════════
+  تنسيقات الموقع — نسخة مُصلَحة جاهزة للّصق في Odoo
+  ════════════════════════════════════════════════════════════
+  • انسخ كل المحتوى بدءاً من <link> حتى آخر </style>
+  • الصقه في: Website → Edit → HTML/CSS/JS Editor
+    أو في حقل "Custom Code" داخل إعدادات الموقع
+  • تأكد من رفع ملف الخط sar-symbol.woff2 إلى /web/static/src/fonts
+    أو عدّل المسار في @font-face أدناه
+  • إن لم يكن لديك ملف الخط، أَزِل @font-face و استخدم الكتلة البديلة
+    المُعلَّمة بـ "البديل بدون خط مخصص" أسفله
+  ════════════════════════════════════════════════════════════
+-->
+
+<!-- 1) تحميل خط IBM Plex Sans Arabic من Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- 2) تعريف خط رمز الريال السعودي (عدّل المسار حسب موقع الملف لديك) -->
+<style>
+  @font-face {
+    font-family: 'sar-symbol';
+    src: url('/web/static/src/fonts/sar-symbol.woff2') format('woff2'),
+         url('/web/static/src/fonts/sar-symbol.woff')  format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
+
+<!-- 3) القواعد الرئيسية -->
+<style>
+  /* ============================================================
+     خلفية ملف #wrapwrap
+     ============================================================ */
+  #wrapwrap { background-image: unset !important; }
+
+  /* ============================================================
+     توحيد الخط في جميع عناصر الموقع
+     (يستثني أيقونات FontAwesome و Odoo Icons)
+     ============================================================ */
+  body,
+  body *:not(.fa):not(.oi):not([class^="fa-"]):not([class*=" fa-"]):not([class^="oi-"]):not([class*=" oi-"]) {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+  }
+  .page, .header, .footer {
+    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  }
+
+  /* ============================================================
+     عرض العملة: إخفاء النص الأصلي قبل القيمة وإظهار رمز الريال
+     ============================================================ */
+  [data-oe-type="monetary"] {
+    font-size: 0 !important;
+    line-height: 1 !important;
+  }
+  [data-oe-type="monetary"] > * {
+    font-size: 1rem !important;
+    line-height: normal !important;
+  }
+
+  .oe_currency_value::before {
+    content: "\e900" !important;
+    font-family: 'sar-symbol' !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    width: auto !important;
+    margin-inline-end: 4px !important;
+    font-size: 0.95em !important;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ============================================================
+     البديل بدون خط مخصص (احذف التعليق إن لم يتوفر sar-symbol)
+     ============================================================
+  .oe_currency_value::before {
+    content: "\FDFC" !important;
+    font-family: inherit !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    width: auto !important;
+    margin-inline-end: 4px !important;
+    font-size: 0.95em !important;
+  }
+  */
+
+  /* ============================================================
+     تأثير البطاقات: شريط أيمن منزلق + رفع + تكبير الأيقونة
+     (تم تضييق النطاق لتجنّب التأثير على بطاقات لوحة التحكم)
+     ============================================================ */
+  main .card,
+  .o_wprofile_main .card,
+  .s_card {
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  main .card::before,
+  .o_wprofile_main .card::before,
+  .s_card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #2c3e6b;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+  }
+
+  /* استبعاد المرور عن الأجهزة اللمسية (يتفادى التأثيرات العالقة) */
+  @media (hover: hover) {
+    main .card:hover::before,
+    .o_wprofile_main .card:hover::before,
+    .s_card:hover::before {
+      transform: scaleY(1);
+    }
+    main .card:hover,
+    .o_wprofile_main .card:hover,
+    .s_card:hover {
+      transform: translateY(-5px);
+    }
+    main .card:hover img,
+    main .card:hover i,
+    main .card:hover svg,
+    .o_wprofile_main .card:hover img,
+    .o_wprofile_main .card:hover i,
+    .o_wprofile_main .card:hover svg,
+    .s_card:hover img,
+    .s_card:hover i,
+    .s_card:hover svg {
+      transform: scale(1.12);
+    }
+  }
+
+  main .card img,
+  main .card i,
+  main .card svg,
+  .o_wprofile_main .card img,
+  .o_wprofile_main .card i,
+  .o_wprofile_main .card svg,
+  .s_card img,
+  .s_card i,
+  .s_card svg {
+    transition: transform 0.35s ease;
+  }
+
+  /* تحييد روابط البطاقات */
+  main .card a,
+  .o_wprofile_main .card a,
+  .s_card a,
+  main .card a:hover, main .card a:visited, main .card a:active, main .card a:focus,
+  .o_wprofile_main .card a:hover, .o_wprofile_main .card a:visited, .o_wprofile_main .card a:active, .o_wprofile_main .card a:focus,
+  .s_card a:hover, .s_card a:visited, .s_card a:active, .s_card a:focus {
+    color: inherit !important;
+    text-decoration: none !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+  }
+
+  /* ============================================================
+     خط سفلي ينزلق من المركز لروابط القائمة الرئيسية
+     ============================================================ */
+  header .top_menu > li > a,
+  header .navbar-nav > .nav-item > .nav-link,
+  .o_header_standard .top_menu > li > a {
+    position: relative;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+  }
+
+  header .top_menu > li > a::after,
+  header .navbar-nav > .nav-item > .nav-link::after,
+  .o_header_standard .top_menu > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: right 0.3s ease, width 0.3s ease;
+  }
+
+  header .top_menu > li > a:hover::after,
+  header .navbar-nav > .nav-item > .nav-link:hover::after,
+  .o_header_standard .top_menu > li > a:hover::after {
+    right: 16px;
+    width: calc(100% - 32px);
+  }
+</style>

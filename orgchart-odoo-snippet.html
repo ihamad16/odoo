@@ -36,10 +36,10 @@
     -webkit-font-smoothing: antialiased;
   }
   .org-chart-root .oc-wrap { width: 100%; overflow-x: auto; }
-  .org-chart-root .oc-inner { margin: 0 auto; position: relative; width: 1700px; height: 1340px; }
+  .org-chart-root .oc-inner { margin: 0 auto; position: relative; width: 1480px; height: 1340px; }
   .org-chart-root .oc-canvas {
     position: absolute; top: 0; right: 0;
-    width: 1700px; height: 1340px;
+    width: 1480px; height: 1340px;
     transform-origin: top right;
   }
   .org-chart-root svg.oc-lines {
@@ -53,7 +53,7 @@
 
   .org-chart-root .oc-node {
     position: absolute; background: var(--paper);
-    border: 1px solid rgba(14,26,45,0.22); border-radius: 4px;
+    border: 1px solid rgba(14,26,45,0.22); border-radius: 10px;
     padding: 0 14px;
     display: flex; align-items: center; justify-content: center;
     text-align: center; color: var(--text);
@@ -76,7 +76,7 @@
 
   @media print {
     .org-chart-root .oc-canvas { transform: none !important; }
-    .org-chart-root .oc-inner  { width: 1700px !important; height: 1340px !important; }
+    .org-chart-root .oc-inner  { width: 1480px !important; height: 1340px !important; }
     .org-chart-root .oc-wrap   { overflow: visible !important; }
   }
 </style>
@@ -85,104 +85,106 @@
 <div class="oc-inner">
 <div class="oc-canvas">
 
-  <svg class="oc-lines" viewBox="0 0 1700 1340" preserveAspectRatio="none"
+  <svg class="oc-lines" viewBox="0 0 1480 1340" preserveAspectRatio="none"
        role="img" aria-label="مخطط الهيكل التنظيمي" xmlns="http://www.w3.org/2000/svg">
     <!-- spine -->
-    <path class="solid" d="M 850 124 V 210"/>
-    <path class="solid" d="M 850 270 V 350"/>
-    <path class="solid" d="M 850 406 V 476"/>
-    <path class="solid" d="M 850 540 V 750"/>
-    <!-- top branches with rounded corners -->
-    <path class="dotted" d="M 730 92 L 214 92 Q 200 92 200 106 L 200 200"/>
-    <path class="dotted" d="M 970 92 L 1486 92 Q 1500 92 1500 106 L 1500 200"/>
-    <path class="dotted" d="M 970 270 L 1486 270 Q 1500 270 1500 284 L 1500 350"/>
+    <path class="solid" d="M 740 124 V 210"/>
+    <path class="solid" d="M 740 270 V 350"/>
+    <path class="solid" d="M 740 406 V 476"/>
+    <path class="solid" d="M 740 540 V 750"/>
+    <!-- top branches with rounded corners (committees raised to top:170) -->
+    <path class="dotted" d="M 620 92 L 244 92 Q 230 92 230 106 L 230 170"/>
+    <path class="dotted" d="M 860 92 L 1236 92 Q 1250 92 1250 106 L 1250 170"/>
+    <!-- internal audit branches off the spine between exec committee and chairman -->
+    <path class="solid" d="M 740 310 H 1236 Q 1250 310 1250 324 V 350"/>
+    <circle class="junction" cx="740" cy="310" r="2.5"/>
     <!-- admin manifold -->
-    <path class="solid" d="M 250 620 L 250 609 Q 250 595 264 595 L 1436 595 Q 1450 595 1450 609 L 1450 620"/>
-    <path class="solid" d="M 650 595 V 620"/>
-    <path class="solid" d="M 1050 595 V 620"/>
-    <circle class="junction" cx="850" cy="595" r="2.5"/>
+    <path class="solid" d="M 230 620 L 230 609 Q 230 595 244 595 L 1236 595 Q 1250 595 1250 609 L 1250 620"/>
+    <path class="solid" d="M 570 595 V 620"/>
+    <path class="solid" d="M 910 595 V 620"/>
+    <circle class="junction" cx="740" cy="595" r="2.5"/>
     <!-- sector manifold -->
-    <path class="solid" d="M 250 780 L 250 764 Q 250 750 264 750 L 1436 750 Q 1450 750 1450 764 L 1450 780"/>
-    <path class="solid" d="M 650 750 V 780"/>
-    <path class="solid" d="M 1050 750 V 780"/>
-    <circle class="junction" cx="850" cy="750" r="2.5"/>
+    <path class="solid" d="M 230 780 L 230 764 Q 230 750 244 750 L 1236 750 Q 1250 750 1250 764 L 1250 780"/>
+    <path class="solid" d="M 570 750 V 780"/>
+    <path class="solid" d="M 910 750 V 780"/>
+    <circle class="junction" cx="740" cy="750" r="2.5"/>
     <!-- side rails (gold) for each sector's units -->
-    <!-- column cx=250 (5 units) -->
-    <path class="accent" d="M 250 844 L 250 856 Q 250 870 264 870 L 400 870 Q 414 870 414 884 L 414 1186"/>
-    <path class="accent" d="M 414 906 H 390"/>
-    <path class="accent" d="M 414 976 H 390"/>
-    <path class="accent" d="M 414 1046 H 390"/>
-    <path class="accent" d="M 414 1116 H 390"/>
-    <path class="accent" d="M 414 1186 H 390"/>
-    <!-- column cx=650 (5 units) -->
-    <path class="accent" d="M 650 844 L 650 856 Q 650 870 664 870 L 800 870 Q 814 870 814 884 L 814 1186"/>
-    <path class="accent" d="M 814 906 H 790"/>
-    <path class="accent" d="M 814 976 H 790"/>
-    <path class="accent" d="M 814 1046 H 790"/>
-    <path class="accent" d="M 814 1116 H 790"/>
-    <path class="accent" d="M 814 1186 H 790"/>
-    <!-- column cx=1050 (4 units) -->
-    <path class="accent" d="M 1050 844 L 1050 856 Q 1050 870 1064 870 L 1200 870 Q 1214 870 1214 884 L 1214 1116"/>
-    <path class="accent" d="M 1214 906 H 1190"/>
-    <path class="accent" d="M 1214 976 H 1190"/>
-    <path class="accent" d="M 1214 1046 H 1190"/>
-    <path class="accent" d="M 1214 1116 H 1190"/>
-    <!-- column cx=1450 (5 units) -->
-    <path class="accent" d="M 1450 844 L 1450 856 Q 1450 870 1464 870 L 1600 870 Q 1614 870 1614 884 L 1614 1186"/>
-    <path class="accent" d="M 1614 906 H 1590"/>
-    <path class="accent" d="M 1614 976 H 1590"/>
-    <path class="accent" d="M 1614 1046 H 1590"/>
-    <path class="accent" d="M 1614 1116 H 1590"/>
-    <path class="accent" d="M 1614 1186 H 1590"/>
+    <!-- column cx=230 (5 units) -->
+    <path class="accent" d="M 230 844 L 230 856 Q 230 870 244 870 L 380 870 Q 394 870 394 884 L 394 1186"/>
+    <path class="accent" d="M 394 906 H 370"/>
+    <path class="accent" d="M 394 976 H 370"/>
+    <path class="accent" d="M 394 1046 H 370"/>
+    <path class="accent" d="M 394 1116 H 370"/>
+    <path class="accent" d="M 394 1186 H 370"/>
+    <!-- column cx=570 (5 units) -->
+    <path class="accent" d="M 570 844 L 570 856 Q 570 870 584 870 L 720 870 Q 734 870 734 884 L 734 1186"/>
+    <path class="accent" d="M 734 906 H 710"/>
+    <path class="accent" d="M 734 976 H 710"/>
+    <path class="accent" d="M 734 1046 H 710"/>
+    <path class="accent" d="M 734 1116 H 710"/>
+    <path class="accent" d="M 734 1186 H 710"/>
+    <!-- column cx=910 (4 units) -->
+    <path class="accent" d="M 910 844 L 910 856 Q 910 870 924 870 L 1060 870 Q 1074 870 1074 884 L 1074 1116"/>
+    <path class="accent" d="M 1074 906 H 1050"/>
+    <path class="accent" d="M 1074 976 H 1050"/>
+    <path class="accent" d="M 1074 1046 H 1050"/>
+    <path class="accent" d="M 1074 1116 H 1050"/>
+    <!-- column cx=1250 (5 units) -->
+    <path class="accent" d="M 1250 844 L 1250 856 Q 1250 870 1264 870 L 1400 870 Q 1414 870 1414 884 L 1414 1186"/>
+    <path class="accent" d="M 1414 906 H 1390"/>
+    <path class="accent" d="M 1414 976 H 1390"/>
+    <path class="accent" d="M 1414 1046 H 1390"/>
+    <path class="accent" d="M 1414 1116 H 1390"/>
+    <path class="accent" d="M 1414 1186 H 1390"/>
   </svg>
 
   <!-- top tier -->
-  <div class="oc-node t-board" style="left:730px;top:60px;width:240px;height:64px">مجلس الإدارة</div>
-  <div class="oc-node t-committee" style="left:90px;top:200px;width:220px;height:60px">لجنة الاستثمار</div>
-  <div class="oc-node t-committee" style="left:1390px;top:200px;width:220px;height:60px">المجلس الاستشاري</div>
-  <div class="oc-node t-exec" style="left:730px;top:210px;width:240px;height:60px">اللجنة التنفيذية</div>
-  <div class="oc-node t-chair" style="left:740px;top:350px;width:220px;height:56px">رئيس مجلس الإدارة</div>
-  <div class="oc-node t-audit" style="left:1390px;top:350px;width:220px;height:56px">قسم المراجعة الداخلية</div>
-  <div class="oc-node t-sg" style="left:725px;top:476px;width:250px;height:64px">الأمين العام</div>
+  <div class="oc-node t-board" style="left:620px;top:60px;width:240px;height:64px">مجلس الإدارة</div>
+  <div class="oc-node t-committee" style="left:120px;top:170px;width:220px;height:60px">لجنة الاستثمار</div>
+  <div class="oc-node t-committee" style="left:1140px;top:170px;width:220px;height:60px">المجلس الاستشاري</div>
+  <div class="oc-node t-exec" style="left:620px;top:210px;width:240px;height:60px">اللجنة التنفيذية</div>
+  <div class="oc-node t-chair" style="left:630px;top:350px;width:220px;height:56px">رئيس مجلس الإدارة</div>
+  <div class="oc-node t-audit" style="left:1140px;top:350px;width:220px;height:56px">قسم المراجعة الداخلية</div>
+  <div class="oc-node t-sg" style="left:615px;top:476px;width:250px;height:64px">الأمين العام</div>
 
   <!-- admin departments -->
-  <div class="oc-node t-admin" style="left:130px;top:620px;width:240px;height:60px">قسم الاستراتيجية</div>
-  <div class="oc-node t-admin" style="left:530px;top:620px;width:240px;height:60px">قسم السياسات العامة</div>
-  <div class="oc-node t-admin" style="left:930px;top:620px;width:240px;height:60px">قسم شؤون الأمانة</div>
-  <div class="oc-node t-admin" style="left:1330px;top:620px;width:240px;height:60px">قسم شؤون مجلس الإدارة</div>
+  <div class="oc-node t-admin" style="left:110px;top:620px;width:240px;height:60px">قسم الاستراتيجية</div>
+  <div class="oc-node t-admin" style="left:450px;top:620px;width:240px;height:60px">قسم السياسات العامة</div>
+  <div class="oc-node t-admin" style="left:790px;top:620px;width:240px;height:60px">قسم شؤون الأمانة</div>
+  <div class="oc-node t-admin" style="left:1130px;top:620px;width:240px;height:60px">قسم شؤون مجلس الإدارة</div>
 
   <!-- sectors -->
-  <div class="oc-node t-sector" style="left:110px;top:780px;width:280px;height:64px">قطاع الخدمات المساندة</div>
-  <div class="oc-node t-sector" style="left:510px;top:780px;width:280px;height:64px">قطاع تطوير الأعمال</div>
-  <div class="oc-node t-sector" style="left:910px;top:780px;width:280px;height:64px">قطاع دعم الأعمال</div>
-  <div class="oc-node t-sector" style="left:1310px;top:780px;width:280px;height:64px">قطاع خدمات العملاء</div>
+  <div class="oc-node t-sector" style="left:90px;top:780px;width:280px;height:64px">قطاع الخدمات المساندة</div>
+  <div class="oc-node t-sector" style="left:430px;top:780px;width:280px;height:64px">قطاع تطوير الأعمال</div>
+  <div class="oc-node t-sector" style="left:770px;top:780px;width:280px;height:64px">قطاع دعم الأعمال</div>
+  <div class="oc-node t-sector" style="left:1110px;top:780px;width:280px;height:64px">قطاع خدمات العملاء</div>
 
-  <!-- support services units (cx=250) -->
-  <div class="oc-node t-unit" style="left:110px;top:880px;width:280px;height:52px">إدارة التسويق وتنمية الموارد</div>
-  <div class="oc-node t-unit" style="left:110px;top:950px;width:280px;height:52px">الإدارة المالية</div>
-  <div class="oc-node t-unit" style="left:110px;top:1020px;width:280px;height:52px">إدارة الموارد البشرية</div>
-  <div class="oc-node t-unit" style="left:110px;top:1090px;width:280px;height:52px">إدارة التحول الرقمي</div>
-  <div class="oc-node t-unit" style="left:110px;top:1160px;width:280px;height:52px">إدارة التشغيل والمشاريع</div>
+  <!-- support services units (cx=230) -->
+  <div class="oc-node t-unit" style="left:90px;top:880px;width:280px;height:52px">إدارة التسويق وتنمية الموارد</div>
+  <div class="oc-node t-unit" style="left:90px;top:950px;width:280px;height:52px">الإدارة المالية</div>
+  <div class="oc-node t-unit" style="left:90px;top:1020px;width:280px;height:52px">إدارة الموارد البشرية</div>
+  <div class="oc-node t-unit" style="left:90px;top:1090px;width:280px;height:52px">إدارة التحول الرقمي</div>
+  <div class="oc-node t-unit" style="left:90px;top:1160px;width:280px;height:52px">إدارة التشغيل والمشاريع</div>
 
-  <!-- business development units (cx=650) -->
-  <div class="oc-node t-unit" style="left:510px;top:880px;width:280px;height:52px">مركز الاستثمار والدراسات</div>
-  <div class="oc-node t-unit" style="left:510px;top:950px;width:280px;height:52px">مركز المنشآت الصغيرة والمتوسطة</div>
-  <div class="oc-node t-unit" style="left:510px;top:1020px;width:280px;height:52px">مركز تمكين المرأة</div>
-  <div class="oc-node t-unit" style="left:510px;top:1090px;width:280px;height:52px">مركز المسؤولية الاجتماعية</div>
-  <div class="oc-node t-unit" style="left:510px;top:1160px;width:280px;height:52px">إدارة الإعلام والاتصال المؤسسي</div>
+  <!-- business development units (cx=570) -->
+  <div class="oc-node t-unit" style="left:430px;top:880px;width:280px;height:52px">مركز الاستثمار والدراسات</div>
+  <div class="oc-node t-unit" style="left:430px;top:950px;width:280px;height:52px">مركز المنشآت الصغيرة والمتوسطة</div>
+  <div class="oc-node t-unit" style="left:430px;top:1020px;width:280px;height:52px">مركز تمكين المرأة</div>
+  <div class="oc-node t-unit" style="left:430px;top:1090px;width:280px;height:52px">مركز المسؤولية الاجتماعية</div>
+  <div class="oc-node t-unit" style="left:430px;top:1160px;width:280px;height:52px">إدارة الإعلام والاتصال المؤسسي</div>
 
-  <!-- business support units (cx=1050) -->
-  <div class="oc-node t-unit" style="left:910px;top:880px;width:280px;height:52px">إدارة القطاع الإنتاجي</div>
-  <div class="oc-node t-unit" style="left:910px;top:950px;width:280px;height:52px">إدارة القطاع التجاري</div>
-  <div class="oc-node t-unit" style="left:910px;top:1020px;width:280px;height:52px">إدارة القطاع الخدمي</div>
-  <div class="oc-node t-unit" style="left:910px;top:1090px;width:280px;height:52px">إدارة مجالس أعمال الفروع</div>
+  <!-- business support units (cx=910) -->
+  <div class="oc-node t-unit" style="left:770px;top:880px;width:280px;height:52px">إدارة القطاع الإنتاجي</div>
+  <div class="oc-node t-unit" style="left:770px;top:950px;width:280px;height:52px">إدارة القطاع التجاري</div>
+  <div class="oc-node t-unit" style="left:770px;top:1020px;width:280px;height:52px">إدارة القطاع الخدمي</div>
+  <div class="oc-node t-unit" style="left:770px;top:1090px;width:280px;height:52px">إدارة مجالس أعمال الفروع</div>
 
-  <!-- customer services units (cx=1450) -->
-  <div class="oc-node t-unit" style="left:1310px;top:880px;width:280px;height:52px">إدارة المشتركين والفروع</div>
-  <div class="oc-node t-unit" style="left:1310px;top:950px;width:280px;height:52px">إدارة العلاقات العامة والمراسم</div>
-  <div class="oc-node t-unit" style="left:1310px;top:1020px;width:280px;height:52px">مركز التدريب</div>
-  <div class="oc-node t-unit" style="left:1310px;top:1090px;width:280px;height:52px">مركز التوظيف</div>
-  <div class="oc-node t-unit" style="left:1310px;top:1160px;width:280px;height:52px">مركز التحكيم</div>
+  <!-- customer services units (cx=1250) -->
+  <div class="oc-node t-unit" style="left:1110px;top:880px;width:280px;height:52px">إدارة المشتركين والفروع</div>
+  <div class="oc-node t-unit" style="left:1110px;top:950px;width:280px;height:52px">إدارة العلاقات العامة والمراسم</div>
+  <div class="oc-node t-unit" style="left:1110px;top:1020px;width:280px;height:52px">مركز التدريب</div>
+  <div class="oc-node t-unit" style="left:1110px;top:1090px;width:280px;height:52px">مركز التوظيف</div>
+  <div class="oc-node t-unit" style="left:1110px;top:1160px;width:280px;height:52px">مركز التحكيم</div>
 
 </div>
 </div>
@@ -198,7 +200,7 @@
     var rafId  = 0;
     function fit(){
       var avail = wrap.clientWidth - 16;
-      var w = 1700, h = 1340;
+      var w = 1480, h = 1340;
       if (avail >= w) {
         canvas.style.transform = 'none';
         inner.style.width = w + 'px';

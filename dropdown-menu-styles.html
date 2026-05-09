@@ -1,0 +1,185 @@
+<!--
+  ════════════════════════════════════════════════════════════
+  تنسيق القائمة المنسدلة — أسلوب كلاسيكي محسّن
+  ════════════════════════════════════════════════════════════
+  • الصقه في: Website → Customize → Header → Custom Code
+    أو في إعدادات Custom HTML/CSS
+  • مزايا التصميم:
+      - خلفية بيضاء بحدود ناعمة وظلّ خفيف
+      - زوايا مدوّرة 10px (تطابق البطاقات)
+      - شريط ذهبي #B08A4F يظهر يميناً عند المرور
+      - انزلاق سلس من الأعلى مع تلاشٍ
+      - مؤشّر مثلّث صغير يربط القائمة بعنصر الترويسة
+  ════════════════════════════════════════════════════════════
+-->
+
+<style>
+  /* ============================================================
+     حاوية القائمة المنسدلة
+     ============================================================ */
+  header .navbar-nav .dropdown-menu,
+  header .top_menu .dropdown-menu,
+  .o_header_standard .dropdown-menu {
+    /* مظهر */
+    background-color: #ffffff;
+    border: 1px solid rgba(14, 26, 45, 0.08);
+    border-radius: 10px;
+    box-shadow: 0 12px 32px -8px rgba(14, 26, 45, 0.18),
+                0 4px 12px -4px rgba(14, 26, 45, 0.08);
+    padding: 8px 0;
+    margin-top: 12px !important;
+    min-width: 220px;
+    overflow: hidden;
+
+    /* انزلاق وتلاشٍ */
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0s linear 0.25s;
+    pointer-events: none;
+  }
+
+  /* الحالة المفتوحة */
+  header .navbar-nav .dropdown:hover > .dropdown-menu,
+  header .navbar-nav .dropdown-menu.show,
+  header .top_menu .dropdown:hover > .dropdown-menu,
+  header .top_menu .dropdown-menu.show,
+  .o_header_standard .dropdown:hover > .dropdown-menu,
+  .o_header_standard .dropdown-menu.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0s linear 0s;
+  }
+
+  /* ============================================================
+     مؤشّر مثلّث صغير أعلى القائمة
+     ============================================================ */
+  header .navbar-nav .dropdown-menu::before,
+  header .top_menu .dropdown-menu::before,
+  .o_header_standard .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 24px;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border-top: 1px solid rgba(14, 26, 45, 0.08);
+    border-right: 1px solid rgba(14, 26, 45, 0.08);
+    transform: rotate(-45deg);
+  }
+
+  /* ============================================================
+     عناصر القائمة
+     ============================================================ */
+  header .navbar-nav .dropdown-menu .dropdown-item,
+  header .top_menu .dropdown-menu .dropdown-item,
+  header .navbar-nav .dropdown-menu > li > a,
+  header .top_menu .dropdown-menu > li > a,
+  .o_header_standard .dropdown-menu .dropdown-item,
+  .o_header_standard .dropdown-menu > li > a {
+    position: relative;
+    display: block;
+    padding: 10px 22px 10px 18px;
+    color: #1c2841 !important;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none !important;
+    background: transparent !important;
+    transition: background-color 0.2s ease, color 0.2s ease, padding 0.25s ease;
+  }
+
+  /* الشريط الذهبي يميناً (يطابق نمط البطاقات) */
+  header .navbar-nav .dropdown-menu .dropdown-item::before,
+  header .top_menu .dropdown-menu .dropdown-item::before,
+  header .navbar-nav .dropdown-menu > li > a::before,
+  header .top_menu .dropdown-menu > li > a::before,
+  .o_header_standard .dropdown-menu .dropdown-item::before,
+  .o_header_standard .dropdown-menu > li > a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100%;
+    background-color: #B08A4F;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s ease;
+  }
+
+  /* تأثير المرور */
+  header .navbar-nav .dropdown-menu .dropdown-item:hover,
+  header .navbar-nav .dropdown-menu .dropdown-item:focus,
+  header .top_menu .dropdown-menu .dropdown-item:hover,
+  header .top_menu .dropdown-menu .dropdown-item:focus,
+  header .navbar-nav .dropdown-menu > li > a:hover,
+  header .top_menu .dropdown-menu > li > a:hover,
+  .o_header_standard .dropdown-menu .dropdown-item:hover,
+  .o_header_standard .dropdown-menu .dropdown-item:focus {
+    background-color: rgba(176, 138, 79, 0.08) !important;
+    color: #0E1A2D !important;
+    padding-right: 26px;
+  }
+
+  header .navbar-nav .dropdown-menu .dropdown-item:hover::before,
+  header .navbar-nav .dropdown-menu .dropdown-item:focus::before,
+  header .top_menu .dropdown-menu .dropdown-item:hover::before,
+  header .top_menu .dropdown-menu .dropdown-item:focus::before,
+  header .navbar-nav .dropdown-menu > li > a:hover::before,
+  header .top_menu .dropdown-menu > li > a:hover::before,
+  .o_header_standard .dropdown-menu .dropdown-item:hover::before,
+  .o_header_standard .dropdown-menu .dropdown-item:focus::before {
+    transform: scaleY(1);
+  }
+
+  /* العنصر النشط */
+  header .navbar-nav .dropdown-menu .dropdown-item.active,
+  header .top_menu .dropdown-menu .dropdown-item.active,
+  .o_header_standard .dropdown-menu .dropdown-item.active {
+    background-color: rgba(176, 138, 79, 0.12) !important;
+    color: #0E1A2D !important;
+  }
+  header .navbar-nav .dropdown-menu .dropdown-item.active::before,
+  header .top_menu .dropdown-menu .dropdown-item.active::before,
+  .o_header_standard .dropdown-menu .dropdown-item.active::before {
+    transform: scaleY(1);
+  }
+
+  /* ============================================================
+     فاصل (إن استُخدم)
+     ============================================================ */
+  header .navbar-nav .dropdown-menu .dropdown-divider,
+  header .top_menu .dropdown-menu .dropdown-divider,
+  .o_header_standard .dropdown-menu .dropdown-divider {
+    margin: 6px 14px;
+    border-top: 1px solid rgba(14, 26, 45, 0.08);
+  }
+
+  /* ============================================================
+     استجابة للجوال — إيقاف الانزلاق المنبثق
+     على الشاشات الصغيرة (يفتح بشكل عادي)
+     ============================================================ */
+  @media (max-width: 991.98px) {
+    header .navbar-nav .dropdown-menu,
+    header .top_menu .dropdown-menu,
+    .o_header_standard .dropdown-menu {
+      box-shadow: none;
+      border: none;
+      margin-top: 0 !important;
+      padding: 0;
+    }
+    header .navbar-nav .dropdown-menu::before,
+    header .top_menu .dropdown-menu::before,
+    .o_header_standard .dropdown-menu::before {
+      display: none;
+    }
+  }
+</style>

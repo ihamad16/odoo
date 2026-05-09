@@ -99,9 +99,10 @@ header .navbar-nav > .nav-item > .nav-link,
     transition: color 0.3s ease;
 }
 
-header .top_menu > li > a::after,
-header .navbar-nav > .nav-item > .nav-link::after,
-.o_header_standard .top_menu > li > a::after {
+/* الخط السفلي على ::before حتى يبقى ::after للسهم */
+header .top_menu > li > a::before,
+header .navbar-nav > .nav-item > .nav-link::before,
+.o_header_standard .top_menu > li > a::before {
     content: '';
     position: absolute;
     bottom: 4px;
@@ -109,17 +110,44 @@ header .navbar-nav > .nav-item > .nav-link::after,
     width: 0;
     height: 2px;
     background-color: #ffffff;
-    border: 0;                  /* إصلاح: يُلغي السهم الصغير من Bootstrap */
-    margin: 0;
-    vertical-align: baseline;
-    transition: all 0.3s ease;
+    transition: right 0.3s ease, width 0.3s ease;
 }
 
-header .top_menu > li > a:hover::after,
-header .navbar-nav > .nav-item > .nav-link:hover::after,
-.o_header_standard .top_menu > li > a:hover::after {
+header .top_menu > li > a:hover::before,
+header .navbar-nav > .nav-item > .nav-link:hover::before,
+.o_header_standard .top_menu > li > a:hover::before {
     right: 16px;
     width: calc(100% - 32px);
+}
+
+/* سهم ▾ بجانب اسم القائمة المنسدلة (يستبدل caret من Bootstrap) */
+header .navbar-nav > .nav-item.dropdown > .nav-link::after,
+header .top_menu > li.dropdown > a::after,
+.o_header_standard .top_menu > li.dropdown > a::after {
+    content: "\25BE" !important;
+    font-family: inherit !important;
+    font-size: 0.8em;
+    color: #ffffff;
+    border: 0 !important;
+    margin: 0 !important;
+    margin-inline-start: 6px !important;
+    vertical-align: middle;
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+/* تدوير السهم عند فتح القائمة */
+header .navbar-nav > .nav-item.dropdown.show > .nav-link::after,
+header .top_menu > li.dropdown.show > a::after,
+.o_header_standard .top_menu > li.dropdown.show > a::after {
+    transform: rotate(180deg);
+}
+
+/* إخفاء caret الافتراضي من Bootstrap على روابط ليست منسدلة (احتياط) */
+header .navbar-nav > .nav-item:not(.dropdown) > .nav-link::after,
+header .top_menu > li:not(.dropdown) > a::after,
+.o_header_standard .top_menu > li:not(.dropdown) > a::after {
+    display: none !important;
 }
 
 /* ============================================

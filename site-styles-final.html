@@ -134,17 +134,23 @@ header .top_menu .dropdown-menu,
     box-shadow: 0 12px 32px -8px rgba(14, 26, 45, 0.18),
                 0 4px 12px -4px rgba(14, 26, 45, 0.08);
     padding: 8px 0 !important;
-    margin-top: 2px !important;
     min-width: 220px;
     overflow: visible;
+
+    /* فرض التموضع تحت الزر مباشرة وإلغاء transforms من Popper */
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: auto !important;
+    bottom: auto !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 4px 0 0 0 !important;
 
     display: block !important;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(-8px);
-    transition: opacity 0.25s ease,
-                transform 0.25s ease,
-                visibility 0s linear 0.25s;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
     pointer-events: none;
 }
 
@@ -153,11 +159,15 @@ header .top_menu .dropdown-menu.show,
 .o_header_standard .dropdown-menu.show {
     visibility: visible;
     opacity: 1;
-    transform: translateY(0);
     pointer-events: auto;
-    transition: opacity 0.25s ease,
-                transform 0.25s ease,
-                visibility 0s linear 0s;
+    transition: opacity 0.2s ease, visibility 0s linear 0s;
+}
+
+/* تأكيد ربط القائمة بعنصر nav-item */
+header .navbar-nav .nav-item.dropdown,
+header .top_menu li.dropdown,
+.o_header_standard li.dropdown {
+    position: relative;
 }
 
 /* مؤشّر مثلّث صغير أعلى القائمة */

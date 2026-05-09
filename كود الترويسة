@@ -1,0 +1,122 @@
+<style>#wrapwrap {background-image: unset!important;}</style>
+
+
+<style>
+*:not(.fa):not(.oi){
+font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+.page, .header, .footer{
+font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}</style>
+ <style>
+    /* ============================================
+       إخفاء النص الأصلي قبل قيمة العملة
+       (رموز مثل $، ر.س، &nbsp;، إلخ)
+       ============================================ */
+    [data-oe-type="monetary"] {
+        font-size: 0 !important;       /* يُخفي أي نص في العنصر الأب */
+    }
+
+    /* استعادة حجم الخط للعناصر الأبناء */
+    [data-oe-type="monetary"] > * {
+        font-size: 1rem !important;     /* أو الحجم المناسب */
+    }
+
+    /* ============================================
+       إظهار رمز الريال ﷼ قبل قيمة العملة
+       ============================================ */
+    .oe_currency_value::before {
+        content: "\e900" !important;
+        font-family: "sar-symbol" !important;
+        display: inline-block !important;
+        visibility: visible !important;
+        width: auto !important;
+        margin-inline-end: 4px !important;
+        font-size: 0.95em !important;
+    }
+.s_card, .card {
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* الإطار الأيمن - لا يأخذ مساحة من البطاقة */
+.s_card::before, .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background-color: #2c3e6b;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+
+.s_card:hover::before, .card:hover::before {
+    transform: scaleY(1);
+}
+
+.s_card:hover, .card:hover {
+    transform: translateY(-5px);
+}
+
+/* تكبير الأيقونة عند المرور بالماوس */
+.s_card img, .s_card i, .s_card svg,
+.card img, .card i, .card svg {
+    transition: transform 0.35s ease;
+}
+
+.s_card:hover img, .s_card:hover i, .s_card:hover svg,
+.card:hover img, .card:hover i, .card:hover svg {
+    transform: scale(1.12);
+}
+
+/* إزالة جميع تأثيرات الروابط داخل البطاقات */
+.s_card a, .card a,
+.s_card a:hover, .card a:hover,
+.s_card a:visited, .card a:visited,
+.s_card a:active, .card a:active,
+.s_card a:focus, .card a:focus {
+    color: inherit !important;
+    text-decoration: none !important;
+    background: none !important;
+    border: none !important;
+    outline: none !important;
+}
+/* ============================================
+   النمط ١ - خط سفلي ينزلق من المركز
+   ============================================ */
+header .top_menu > li > a,
+header .navbar-nav > .nav-item > .nav-link,
+.o_header_standard .top_menu > li > a {
+    position: relative;
+    padding: 10px 16px !important;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+
+header .top_menu > li > a::after,
+header .navbar-nav > .nav-item > .nav-link::after,
+.o_header_standard .top_menu > li > a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    right: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+header .top_menu > li > a:hover::after,
+header .navbar-nav > .nav-item > .nav-link:hover::after,
+.o_header_standard .top_menu > li > a:hover::after {
+    right: 16px;
+    width: calc(100% - 32px);
+}
+
+</style>
